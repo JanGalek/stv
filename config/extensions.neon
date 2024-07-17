@@ -1,0 +1,14 @@
+extensions:
+	resource: Contributte\DI\Extension\ResourceExtension
+	api: Apitte\Core\DI\ApiExtension
+
+resource:
+	resources:
+		App\Api\V1\Controllers\:
+			paths: [%appDir%/Api/V1/Controllers]
+
+api:
+	debug: %debugMode%
+	catchException: true
+	plugins:
+		Apitte\OpenApi\DI\OpenApiPlugin:
