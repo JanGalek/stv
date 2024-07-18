@@ -24,4 +24,17 @@ class MovieController extends BaseController
 		return $response;
 	}
 
+	#[
+		Path('/test'),
+		Method('GET')
+	]
+	public function test(ApiRequest $request, ApiResponse $response): ApiResponse
+	{
+		$response = $response->writeJsonBody([
+			'test',
+		]);
+
+		bdump($response);
+		return $response;
+	}
 }

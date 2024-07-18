@@ -1,5 +1,6 @@
 extensions:
 	resource: Contributte\DI\Extension\ResourceExtension
+	tracy.bluescreens: Contributte\Tracy\DI\TracyBlueScreensExtension
 	api: Apitte\Core\DI\ApiExtension
 
 resource:
@@ -8,7 +9,14 @@ resource:
 			paths: [%appDir%/Api/V1/Controllers]
 
 api:
-	debug: %debugMode%
+	debug: true
+#	debug: %debugMode%
 	catchException: true
 	plugins:
+		Apitte\Core\DI\Plugin\CoreDecoratorPlugin:
+		Apitte\Negotiation\DI\NegotiationPlugin:
+		Apitte\Debug\DI\DebugPlugin:
+			debug:
+				panel: %debugMode%
+				negotiation: %debugMode%
 		Apitte\OpenApi\DI\OpenApiPlugin:

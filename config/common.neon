@@ -9,9 +9,11 @@ application:
 
 
 database:
-	dsn: 'sqlite::memory:'
-	user:
-	password:
+	dsn: 'pgsql:host=/tmp;port=5432;dbname=testdb'
+	user: 'postgres'
+	password: 'postgres'
+	options:
+		lazy: true
 
 
 latte:
