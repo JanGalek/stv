@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace App\UI\Error\Error5xx;
 
@@ -9,17 +7,17 @@ use Nette\Application\Responses;
 use Nette\Http;
 use Tracy\ILogger;
 
-
 /**
  * Handles uncaught exceptions and errors, and logs them.
  */
 final class Error5xxPresenter implements Nette\Application\IPresenter
 {
+
 	public function __construct(
 		private ILogger $logger,
-	) {
+	)
+	{
 	}
-
 
 	public function run(Nette\Application\Request $request): Nette\Application\Response
 	{
@@ -34,4 +32,5 @@ final class Error5xxPresenter implements Nette\Application\IPresenter
 			}
 		});
 	}
+
 }

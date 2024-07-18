@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="Contributte" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd">
+
+    <!-- Check only whitelist files -->
+    <arg name="extensions" value="php,phpt"/>
+
+    <!-- Enforce encoding -->
+    <arg name="encoding" value="utf-8"/>
+
+    <!-- Show progress -->
+    <arg value="ps"/>
+
+    <!-- Nice colors -->
+    <arg name="colors"/>
+
+    <!-- Strip filepaths to basepath -->
+    <arg name="basepath" value="./"/>
+
+    <!-- Feel the speed -->
+    <arg name="parallel" value="16"/>
+
+    <!-- Rulesets -->
+    <rule ref="./vendor/contributte/qa/ruleset-8.2.xml"/>
+    <!-- <rule ref="./vendor/contributte/qa/ruleset-8.0.xml"/> -->
+    <!-- <rule ref="./vendor/contributte/qa/ruleset-next.xml"/> -->
+
+    <!-- Rules -->
+
+    <rule ref="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly">
+        <exclude name="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly.ReferenceViaFallbackGlobalName"/>
+        <properties>
+            <property name="allowFullyQualifiedExceptions" value="false"/>
+            <property name="allowFallbackGlobalConstants" value="false"/>
+            <property name="allowFallbackGlobalFunctions" value="false"/>
+            <property name="allowFullyQualifiedGlobalClasses" value="true"/>
+            <property name="allowFullyQualifiedGlobalConstants" value="false"/>
+            <property name="allowFullyQualifiedGlobalFunctions" value="false"/>
+            <property name="allowFullyQualifiedNameForCollidingClasses" value="true"/>
+            <property name="allowFullyQualifiedNameForCollidingConstants" value="true"/>
+            <property name="allowFullyQualifiedNameForCollidingFunctions" value="true"/>
+            <property name="searchAnnotations" value="true"/>
+            <property name="allowPartialUses" value="true"/>
+        </properties>
+    </rule>
+
+    <!-- Excludes -->
+    <exclude-pattern>/tests/tmp</exclude-pattern>
+</ruleset>

@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace App\Api\V1\Controllers;
 
@@ -12,6 +10,7 @@ use Apitte\Core\Http\ApiResponse;
 #[Path('/movies')]
 class MovieController extends BaseController
 {
+
 	#[
 		Path('/'),
 		Method('GET')
@@ -19,9 +18,10 @@ class MovieController extends BaseController
 	public function list(ApiRequest $request, ApiResponse $response): ApiResponse
 	{
 		$response = $response->writeJsonBody([
-			'test'
+			'test',
 		]);
 
 		return $response;
 	}
+
 }

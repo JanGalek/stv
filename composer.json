@@ -24,7 +24,10 @@
 	},
 	"require-dev": {
 		"nette/tester": "^2.5",
-		"symfony/thanks": "^1"
+		"symfony/thanks": "^1",
+		"phpstan/phpstan": "^1.11",
+		"phpunit/phpunit": "^11",
+		"contributte/qa": "^0.3.1"
 	},
 	"autoload": {
 		"psr-4": {
@@ -35,7 +38,8 @@
 	"minimum-stability": "stable",
 	"config": {
 		"allow-plugins": {
-			"symfony/thanks": true
+			"symfony/thanks": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true
 		}
 	}
 }
