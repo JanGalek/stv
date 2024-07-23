@@ -1,7 +1,5 @@
-version: '3'
 
 services:
-
   nginx:
     image: nginx:1.27
     volumes:
@@ -17,6 +15,7 @@ services:
       - "traefik.http.middlewares.allow-headers.headers.customRequestHeaders.allowedHeaders=*"
     networks:
       - traefik
+      - stv
 
   php83-fpm:
     build:
@@ -30,6 +29,7 @@ services:
       - ./.docker/conf/00-debug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
     networks:
       - traefik
+      - stv
     extra_hosts:
       - host.docker.internal:host-gateway
     env_file: .env
@@ -42,12 +42,14 @@ services:
     #      - ./../pgsql/13/data/:/var/lib/postgresql/data
     networks:
       - traefik
+      - stv
     ports:
       - '5432:5432'
 
 networks:
   traefik:
     external: true
-
+  stv:
+    driver: bridge
 volumes:
   pgdata:

@@ -1,4 +1,4 @@
-.PHONY: phpstan cs csf start stop restart in composer logs
+.PHONY: phpstan cs csf start stop restart in composer install logs
 
 phpstan:
 	vendor/bin/phpstan analyse ./app ./src
@@ -11,12 +11,14 @@ start:
 stop:
 	docker compose stop
 restart:
-	stop
-	start
+	$(MAKE) stop
+	$(MAKE) start
 in:
 	docker compose exec php83-fpm /bin/bash
 composer:
 	docker compose exec php83-fpm composer $(filter-out $@,$(MAKECMDGOALS))
+install:
+	docker compose exec php83-fpm composer install
 logs:
 	docker compose logs --follow
 
