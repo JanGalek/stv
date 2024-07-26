@@ -8,6 +8,7 @@ extensions:
 	nettrine.orm: Nettrine\ORM\DI\OrmExtension
 	nettrine.cache: Nettrine\Cache\DI\CacheExtension
 	nettrine.fixtures: Nettrine\Fixtures\DI\FixturesExtension
+	nettrine.migrations: Nettrine\Migrations\DI\MigrationsExtension
 
 resource:
 	resources:
@@ -31,7 +32,7 @@ nettrine.dbal:
     panel: %debugMode%
     sourcePaths: [%appDir%, %srcDir%]
   connection:
-    driver: pdo_pgsql
+    driver: pgsql
     host: %env.DATABASE_HOST%
     dbname: %env.DATABASE_NAME%
     user: %env.DATABASE_USER%
@@ -41,3 +42,6 @@ nettrine.dbal:
 nettrine.fixtures:
   paths:
     - %appDir%/Fixtures
+
+nettrine.migrations:
+  directory: %migrationDir%

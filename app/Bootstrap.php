@@ -14,6 +14,8 @@ class Bootstrap
 
 		$configurator = new ExtraConfigurator();
 		$appDir = dirname(__DIR__);
+		$rootDir = dirname(__DIR__ . '/..');
+		$migrationDir = $rootDir . '/migrations';
 		$confDir = $appDir . '/config';
 		$localConfig = $confDir . '/local.neon';
 
@@ -27,6 +29,8 @@ class Bootstrap
 
 		$configurator->addStaticParameters([
 			'srcDir' => $appDir . '/src',
+			'rootDir' => $rootDir,
+			'migrationDir' => $migrationDir,
 		]);
 
 		$configurator->createRobotLoader()

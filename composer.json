@@ -27,7 +27,8 @@
 		"contributte/console": "^0.10.1",
 		"nettrine/cache": "^0.3.0",
 		"nettrine/fixtures": "^0.7.2",
-		"contributte/bootstrap": "^0.6.0"
+		"contributte/bootstrap": "^0.6.0",
+		"nettrine/migrations": "^0.9.1"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",

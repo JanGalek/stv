@@ -2,9 +2,10 @@
 
 namespace SledovaniTV\Model;
 
-use App\Model\Database\Attribute\Column;
-use App\Model\Database\Attribute\Entity;
-use App\Model\Database\Attribute\Table;
+
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\Table;
 
 #[
 	Entity,
