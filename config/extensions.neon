@@ -2,6 +2,12 @@ extensions:
 	resource: Contributte\DI\Extension\ResourceExtension
 	tracy.bluescreens: Contributte\Tracy\DI\TracyBlueScreensExtension
 	api: Apitte\Core\DI\ApiExtension
+	console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
+	nettrine.orm: Nettrine\ORM\DI\OrmExtension
+	nettrine.dbal: Nettrine\DBAL\DI\DbalExtension
+	nettrine.dbal.console: Nettrine\DBAL\DI\DbalConsoleExtension(%consoleMode%)
+	nettrine.cache: Nettrine\Cache\DI\CacheExtension
+	nettrine.fixtures: Nettrine\Fixtures\DI\FixturesExtension
 
 resource:
 	resources:
@@ -20,3 +26,7 @@ api:
 				panel: %debugMode%
 				negotiation: %debugMode%
 		Apitte\OpenApi\DI\OpenApiPlugin:
+
+nettrine.fixtures:
+  paths:
+    - %appDir%/Fixtures

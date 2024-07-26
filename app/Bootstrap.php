@@ -3,14 +3,22 @@
 namespace App;
 
 use Nette\Bootstrap\Configurator;
+use SledovaniTV\Lib\DotEnv\Loader;
+use Symfony\Component\Dotenv\Dotenv;
 
 class Bootstrap
 {
 
 	public static function boot(): Configurator
 	{
+
 		$configurator = new Configurator();
 		$appDir = dirname(__DIR__);
+		$confDir = $appDir . '/config';
+		$localConfig = $confDir . '/local.neon';
+
+		Loader::load($configurator, $appDir . '/.env');
+		bdump($configurator);
 
 		$configurator->setDebugMode(true);
 		//$configurator->setDebugMode('secret@23.75.345.200'); // enable for your remote IP
@@ -22,9 +30,13 @@ class Bootstrap
 			->addDirectory(__DIR__)
 			->register();
 
-		$configurator->addConfig($appDir . '/config/common.neon');
-		$configurator->addConfig($appDir . '/config/services.neon');
-		$configurator->addConfig($appDir . '/config/extensions.neon');
+		$configurator->addConfig($confDir . '/common.neon');
+		$configurator->addConfig($confDir . '/services.neon');
+		$configurator->addConfig($confDir . '/extensions.neon');
+
+		if (file_exists($localConfig)) {
+			$configurator->addConfig($localConfig);
+		}
 
 		return $configurator;
 	}

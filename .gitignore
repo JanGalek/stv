@@ -3,3 +3,4 @@
 /.env
 !/log/.gitignore
 !/temp/.gitignore
+/config/local.neon
