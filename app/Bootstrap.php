@@ -2,9 +2,9 @@
 
 namespace App;
 
+use Contributte\Bootstrap\ExtraConfigurator;
 use Nette\Bootstrap\Configurator;
 use SledovaniTV\Lib\DotEnv\Loader;
-use Symfony\Component\Dotenv\Dotenv;
 
 class Bootstrap
 {
@@ -12,19 +12,22 @@ class Bootstrap
 	public static function boot(): Configurator
 	{
 
-		$configurator = new Configurator();
+		$configurator = new ExtraConfigurator();
 		$appDir = dirname(__DIR__);
 		$confDir = $appDir . '/config';
 		$localConfig = $confDir . '/local.neon';
 
 		Loader::load($configurator, $appDir . '/.env');
-		bdump($configurator);
 
-		$configurator->setDebugMode(true);
-		//$configurator->setDebugMode('secret@23.75.345.200'); // enable for your remote IP
+		$configurator->addEnvParameters();
+		$configurator->setEnvDebugMode();
+
 		$configurator->enableTracy($appDir . '/log');
-
 		$configurator->setTempDirectory($appDir . '/temp');
+
+		$configurator->addStaticParameters([
+			'srcDir' => $appDir . '/src',
+		]);
 
 		$configurator->createRobotLoader()
 			->addDirectory(__DIR__)

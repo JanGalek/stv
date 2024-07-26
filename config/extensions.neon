@@ -3,9 +3,9 @@ extensions:
 	tracy.bluescreens: Contributte\Tracy\DI\TracyBlueScreensExtension
 	api: Apitte\Core\DI\ApiExtension
 	console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
-	nettrine.orm: Nettrine\ORM\DI\OrmExtension
 	nettrine.dbal: Nettrine\DBAL\DI\DbalExtension
 	nettrine.dbal.console: Nettrine\DBAL\DI\DbalConsoleExtension(%consoleMode%)
+	nettrine.orm: Nettrine\ORM\DI\OrmExtension
 	nettrine.cache: Nettrine\Cache\DI\CacheExtension
 	nettrine.fixtures: Nettrine\Fixtures\DI\FixturesExtension
 
@@ -15,8 +15,7 @@ resource:
 			paths: [%appDir%/Api/V1/Controllers]
 
 api:
-	debug: true
-#	debug: %debugMode%
+	debug: %debugMode%
 	catchException: true
 	plugins:
 		Apitte\Core\DI\Plugin\CoreDecoratorPlugin:
@@ -26,6 +25,18 @@ api:
 				panel: %debugMode%
 				negotiation: %debugMode%
 		Apitte\OpenApi\DI\OpenApiPlugin:
+
+nettrine.dbal:
+  debug:
+    panel: %debugMode%
+    sourcePaths: [%appDir%, %srcDir%]
+  connection:
+    driver: pdo_pgsql
+    host: %env.DATABASE_HOST%
+    dbname: %env.DATABASE_NAME%
+    user: %env.DATABASE_USER%
+    password:  %env.DATABASE_PASSWORD%
+    charset: utf8
 
 nettrine.fixtures:
   paths:

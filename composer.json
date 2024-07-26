@@ -26,10 +26,11 @@
 		"nettrine/dbal": "^0.8.2",
 		"contributte/console": "^0.10.1",
 		"nettrine/cache": "^0.3.0",
-		"symfony/dotenv": "^7.1",
-		"nettrine/fixtures": "^0.7.2"
+		"nettrine/fixtures": "^0.7.2",
+		"contributte/bootstrap": "^0.6.0"
 	},
 	"require-dev": {
+		"roave/security-advisories": "dev-latest",
 		"nette/tester": "^2.5",
 		"symfony/thanks": "^1",
 		"phpstan/phpstan": "^1.11",

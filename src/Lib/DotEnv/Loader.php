@@ -26,6 +26,10 @@ class Loader
 					$_ENV[$name] = $value;
 					$_SERVER[$name] = $value;
 				}
+
+				if ($name === 'NETTE_DEBUG') {
+					$_ENV[$name] = $value;
+				}
 			}
 
 			$configurator->addStaticParameters($parameters);
