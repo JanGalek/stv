@@ -6,6 +6,7 @@ extensions:
 	nettrine.dbal: Nettrine\DBAL\DI\DbalExtension
 	nettrine.dbal.console: Nettrine\DBAL\DI\DbalConsoleExtension(%consoleMode%)
 	nettrine.orm: Nettrine\ORM\DI\OrmExtension
+	nettrine.orm.attributes: Nettrine\ORM\DI\OrmAttributesExtension
 	nettrine.cache: Nettrine\Cache\DI\CacheExtension
 	nettrine.fixtures: Nettrine\Fixtures\DI\FixturesExtension
 	nettrine.migrations: Nettrine\Migrations\DI\MigrationsExtension
@@ -39,6 +40,11 @@ nettrine.dbal:
     password:  %env.DATABASE_PASSWORD%
     charset: utf8
 
+nettrine.orm.attributes:
+  mapping: [
+    SledovaniTV\Model: %srcDir%/Model
+  ]
+  excludePaths: []
 nettrine.fixtures:
   paths:
     - %appDir%/Fixtures
