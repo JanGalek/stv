@@ -2,10 +2,20 @@
 
 declare(strict_types=1);
 
+use Apitte\Core\Application\IApplication as ApiApplication;
+use App\Bootstrap;
+use Nette\Application\Application as UIApplication;
+
 require __DIR__ . '/../vendor/autoload.php';
 
-$configurator = App\Bootstrap::boot();
+$configurator = Bootstrap::boot();
+$isApi = str_starts_with($_SERVER['REQUEST_URI'], '/api');
 $container = $configurator->createContainer();
-//$application = $container->getByType(Nette\Application\Application::class);
-$application = $container->getByType(\Apitte\Core\Application\IApplication::class);
-$application->run();
+
+if ($isApi) {
+	// Apitte application
+	$container->getByType(ApiApplication::class)->run();
+} else {
+	// Nette application
+	$container->getByType(UIApplication::class)->run();
+}

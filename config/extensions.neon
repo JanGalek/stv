@@ -15,6 +15,8 @@ resource:
 	resources:
 		App\Api\V1\Controllers\:
 			paths: [%appDir%/Api/V1/Controllers]
+		SledovaniTV\:
+			paths: [%srcDir%]
 
 api:
 	debug: %debugMode%
@@ -27,6 +29,17 @@ api:
 				panel: %debugMode%
 				negotiation: %debugMode%
 		Apitte\OpenApi\DI\OpenApiPlugin:
+			definition:
+				openapi: "3.0.2"
+				info:
+					title: My awesome OpenApi specification
+					version: "1.0.0"
+			swaggerUi:
+				panel: true #activate Tracy panel in debug mode
+				url: null # default url
+				expansion: full # list|full|none
+				filter: true # true|false|string
+				title: My API v2
 
 nettrine.dbal:
   debug:

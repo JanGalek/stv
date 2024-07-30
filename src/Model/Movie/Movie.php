@@ -24,7 +24,7 @@ class Movie
 	#[ManyToOne(targetEntity: Author::class, inversedBy: 'movies')]
 	private Author $author;
 
-	#[ManyToMany(targetEntity: Genre::class, mappedBy: 'movies')]
+	#[ManyToMany(targetEntity: Genre::class, inversedBy: 'movies')]
 	private Collection $genres;
 
 	#[Column(type: 'string')]

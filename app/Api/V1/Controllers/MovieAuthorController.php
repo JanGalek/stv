@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace App\Api\V1\Controllers;
 
@@ -9,14 +9,14 @@ use Apitte\Core\Annotation\Controller\RequestParameter;
 use Apitte\Core\Annotation\Controller\Tag;
 use Apitte\Core\Http\ApiRequest;
 use Apitte\Core\Http\ApiResponse;
-use SledovaniTV\Model\Movie\Movie;
-use SledovaniTV\Repository\Movie\MovieRepository;
+use SledovaniTV\Model\Movie\Author;
+use SledovaniTV\Repository\Movie\AuthorRepository;
 
-#[Path('/movies'), Tag(name: 'Movies')]
-class MovieController extends BaseController
+#[Path('/movies/authors'), Tag('Movies Authors')]
+class MovieAuthorController extends BaseController
 {
 
-	public function __construct(private MovieRepository $movieRepository)
+	public function __construct(private AuthorRepository $authorRepository)
 	{
 	}
 
@@ -26,7 +26,7 @@ class MovieController extends BaseController
 	]
 	public function list(ApiRequest $request, ApiResponse $response): ApiResponse
 	{
-		$result = $this->movieRepository->findAll();
+		$result = $this->authorRepository->findAll();
 
 		$response = $response->writeJsonBody([
 			'test',
@@ -52,10 +52,11 @@ class MovieController extends BaseController
 	#[
 		Path('/'),
 		Method('POST'),
-		RequestBody(entity: Movie::class)
+		RequestBody(entity: Author::class)
 	]
 	public function create(ApiRequest $request, ApiResponse $response): ApiResponse
 	{
+		$entity = $request->getEntity();
 		return $response;
 	}
 
@@ -81,5 +82,4 @@ class MovieController extends BaseController
 		]);
 		return $response;
 	}
-
 }

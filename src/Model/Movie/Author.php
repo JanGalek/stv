@@ -18,7 +18,7 @@ class Author
 	private int $id;
 
 	#[Column(type: 'string')]
-	private string $name;
+	public string $name;
 
 	#[OneToMany(mappedBy: 'author', targetEntity: Movie::class)]
 	private Collection $movies;

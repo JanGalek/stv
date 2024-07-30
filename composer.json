@@ -28,7 +28,8 @@
 		"nettrine/cache": "^0.3.0",
 		"nettrine/fixtures": "^0.7.2",
 		"contributte/bootstrap": "^0.6.0",
-		"nettrine/migrations": "^0.9.1"
+		"nettrine/migrations": "^0.9.1",
+		"contributte/openapi": "^0.1.0"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",

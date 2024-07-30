@@ -1,19 +1,17 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace App\Api\V1\Controllers;
 
 use Apitte\Core\Annotation\Controller\Method;
 use Apitte\Core\Annotation\Controller\Path;
-use Apitte\Core\Annotation\Controller\RequestBody;
 use Apitte\Core\Annotation\Controller\RequestParameter;
 use Apitte\Core\Annotation\Controller\Tag;
 use Apitte\Core\Http\ApiRequest;
 use Apitte\Core\Http\ApiResponse;
-use SledovaniTV\Model\Movie\Movie;
 use SledovaniTV\Repository\Movie\MovieRepository;
 
-#[Path('/movies'), Tag(name: 'Movies')]
-class MovieController extends BaseController
+#[Path('/movies/genres'), Tag('Movies genres')]
+class MovieGenreController extends BaseController
 {
 
 	public function __construct(private MovieRepository $movieRepository)
@@ -49,11 +47,7 @@ class MovieController extends BaseController
 		return $response;
 	}
 
-	#[
-		Path('/'),
-		Method('POST'),
-		RequestBody(entity: Movie::class)
-	]
+	#[Path('/'), Method('POST')]
 	public function create(ApiRequest $request, ApiResponse $response): ApiResponse
 	{
 		return $response;
@@ -81,5 +75,4 @@ class MovieController extends BaseController
 		]);
 		return $response;
 	}
-
 }
