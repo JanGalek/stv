@@ -53,6 +53,10 @@ nettrine.dbal:
     password:  %env.DATABASE_PASSWORD%
     charset: utf8
 
+nettrine.orm:
+  configuration:
+    autoGenerateProxyClasses: %debugMode%
+
 nettrine.orm.attributes:
   mapping: [
     SledovaniTV\Model: %srcDir%/Model

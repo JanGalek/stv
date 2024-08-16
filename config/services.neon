@@ -1,6 +1,6 @@
 services:
 	- App\Core\RouterFactory::createRouter
-
+	- SledovaniTV\Lib\Database\NativeQueryWrapper(Doctrine\ORM\NativeQuery)
 
 search:
 	-	in: %appDir%

@@ -3,20 +3,16 @@
 namespace SledovaniTV\Lib\Database;
 
 use Doctrine;
-use Kdyby;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping;
 use Nette;
 
-
-
 /**
- * @author Filip Procházka <filip@prochazka.su>
- *
  * @method NativeQueryBuilder setParameter($key, $value, $type = null)
  * @method NativeQueryBuilder setParameters(array $params, array $types = [])
  * @method NativeQueryBuilder setFirstResult($firstResult)
  * @method NativeQueryBuilder setMaxResults($maxResults)
  * @method NativeQueryBuilder select($select = null)
- * @method NativeQueryBuilder addSelect($select = null)
  * @method NativeQueryBuilder delete($delete = null, $alias = null)
  * @method NativeQueryBuilder update($update = null, $alias = null)
  * @method NativeQueryBuilder groupBy($groupBy)
@@ -47,7 +43,7 @@ class NativeQueryBuilder extends Doctrine\DBAL\Query\QueryBuilder
 
 
 
-	public function __construct(Doctrine\ORM\EntityManager $em)
+	public function __construct(EntityManagerInterface $em)
 	{
 		parent::__construct($em->getConnection());
 		$this->em = $em;
